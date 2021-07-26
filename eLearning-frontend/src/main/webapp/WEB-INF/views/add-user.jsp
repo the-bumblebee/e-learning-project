@@ -79,24 +79,3 @@
 	</script>
 </body>
 </html>
-   
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <head> -->
-<!-- <meta charset="ISO-8859-1"> -->
-<!-- <title>Insert title here</title> -->
-<!-- </head> -->
-<!-- <body> -->
-<!-- <h1>User Registration</h1> -->
-<!-- 	<hr> -->
-<%-- 	<pre><form:form action="register" method="POST" modelAttribute="user"> --%>
-<%-- 		User ID		: <form:input path="user-id" /><br> --%>
-<%-- 		Name		: <form:input path="name" /><br> --%>
-<%-- 		Email		: <form:input path="email" /><br> --%>
-<%-- 		Phone No	: <form:input path="phone-no" /><br> --%>
-<%-- 		Password	: <form:input path="password" /><br> --%>
-<!-- 		<input type="submit" value="Register" /> -->
-<!-- 		<input type="reset" value="Cancel" /> -->
-<%-- 	</form:form></pre> --%>
-<!-- </body> -->
-<!-- </html> -->

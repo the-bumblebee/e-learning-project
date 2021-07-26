@@ -30,7 +30,7 @@
 			<th>Resource</th>
 			<th>Actions</th>
 		</tr>
-		<c:forEach var="course" items="${courses}">
+		<c:forEach var="course" items="${ courses }">
 			<tr>
 				<td>${ course.courseId }</td>
 				<td>${ course.cName }</td>

@@ -15,9 +15,10 @@
 	<hr>
 	<div class="text-center">
 		<a href="user-list" class="btn btn-outline-primary mr-1">Users</a>
-		<a href="add-user" class="btn btn-outline-primary mr-1">Register</a>
 		<a href="course-list" class="btn btn-outline-primary">Courses</a>
 		<a href="feedback-list" class="btn btn-outline-primary">Feedbacks</a>
+		<a href="contact-list" class="btn btn-outline-primary">Contacts</a>
+		<a href="admin-list" class="btn btn-outline-primary">Admins</a>
 	</div>
 </body>
 </html>

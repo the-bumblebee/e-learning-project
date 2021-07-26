@@ -7,32 +7,32 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New User</title>
+<title>New Contact</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1 class="text-center">User Registration</h1>
+<h1 class="text-center">New Contact</h1>
 	<hr>
-	<form:form action="add-user" method="POST" modelAttribute="user" enctype="multipart/form-data" autocomplete="off">
+	<form:form action="add-contact" method="POST" modelAttribute="contact" autocomplete="off">
 		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">User Id</label>
+			<label class="col-sm-1">Contact Id</label>
 			<div class="col-sm-3">
-				<form:input path="userId" cssClass="form-control" />
+				<form:input path="contactId" cssClass="form-control" />
+			</div>
+		</div>
+		<div class="form-group row justify-content-md-center">
+			<label class="col-sm-1">User ID</label>
+			<div class="col-sm-3">
+				<form:input path="userId" cssClass="form-control"  />
 			</div>
 		</div>
 		<div class="form-group row justify-content-md-center">
 			<label class="col-sm-1">Name</label>
 			<div class="col-sm-3">
-				<form:input path="name" cssClass="form-control"  />
-			</div>
-		</div>
-		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">Phone No.</label>
-			<div class="col-sm-3">
-				<form:input path="phoneNo" cssClass="form-control" />
+				<form:input path="name" cssClass="form-control" />
 			</div>
 		</div>
 		<div class="form-group row justify-content-md-center">
@@ -42,40 +42,21 @@
 			</div>
 		</div>
 		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">Address</label>
+			<label class="col-sm-1">Phone No.</label>
 			<div class="col-sm-3">
-				<form:input path="address" cssClass="form-control" />
+				<form:input path="phoneNo" cssClass="form-control" />
 			</div>
 		</div>
 		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">Reg Date</label>
+			<label class="col-sm-1">Message</label>
 			<div class="col-sm-3">
-				<input type="date" class="form-control" name="reg-date" />
+				<form:input path="message" cssClass="form-control" />
 			</div>
 		</div>
 		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">Password</label>
-			<div class="col-sm-3">
-				<form:password path="password" cssClass="form-control" />
-			</div>
-		</div>
-		<div class="form-group row justify-content-md-center">
-			<label class="col-sm-1">Upload Photo</label>
-			<div class="col-sm-3 custom-file">
-				<input type="file" class="custom-file-input" name="upload-photo" accept="image/*" />
-				<label class="custom-file-label">Choose Photo</label>
-			</div>
-		</div>
-		<div class="form-group row justify-content-md-center">
-			<input type="submit" class="btn btn-primary mr-1" value="Register" />
+			<input type="submit" class="btn btn-primary mr-1" value="Add Feedback" />
 			<input type="reset" class="btn btn-secondary" value="Cancel" />
 		</div>
 	</form:form>
-	<script type="application/javascript">
-		$('input[type="file"]').change(function(e){
-			var fileName = e.target.files[0].name;
-			$('.custom-file-label').text(fileName);
-		});
-	</script>
 </body>
 </html>

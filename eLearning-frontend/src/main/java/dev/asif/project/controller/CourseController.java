@@ -42,5 +42,17 @@ public class CourseController {
 		courseDAO.deleteCourse(courseId);
 		return "redirect:/course-list";
 	}
+	
+	@GetMapping("/update-course/{course-id}")
+	public String updateCourseForm(@PathVariable("course-id") Long courseId, Model model) {
+		model.addAttribute("course", courseDAO.getCourseById(courseId));
+		return "update-course";
+	}
+	
+	@PostMapping("/update-course")
+	public String updateCourse(@ModelAttribute("course") Course course) {
+		courseDAO.updateCourse(course);
+		return "redirect:/course-list";
+	}
 
 }
