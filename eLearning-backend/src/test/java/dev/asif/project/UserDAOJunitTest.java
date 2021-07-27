@@ -30,7 +30,7 @@ class UserDAOJunitTest {
 	}
 	
 	@Test
-	@Order(4)
+//	@Order(4)
 	void test_get_all_users_success() {
 		List<User> users = dao.findAll();
 		
@@ -40,8 +40,8 @@ class UserDAOJunitTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	@Order(5)
+//	@Test
+//	@Order(5)
 	void test_get_username_from_all_success(){
 		List<User> users = dao.findAll();
 		
@@ -51,15 +51,15 @@ class UserDAOJunitTest {
 		assertEquals(expected, actual);
 	}
 	
-	@Test
-	@Order(1)
+//	@Test
+//	@Order(1)
 	void test_add_user_success() {
 		User user = new User(107L, "Anoop", 9495687990L, "anoop@gmail.com", "Kolkata", LocalDate.of(2021, 3, 26), "anoop", "img1.jpg");
 		assertTrue(dao.addUser(user));
 	}
 	
-	@Test
-	@Order(2)
+//	@Test
+//	@Order(2)
 	void test_update_user_success() {
 		User user = dao.getUserById(107L);
 		user.setAddress("Delhi");

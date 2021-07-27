@@ -22,13 +22,13 @@ public class FeedbackController {
 	public String feedbacksPage(Model model) {
 		List<Feedback> feedbackList = feedbackDAO.findAll();
 		model.addAttribute("feedbacks", feedbackList);
-		return "feedbacks";
+		return "feedback/feedbacks";
 	}
 	
 	@GetMapping("/add-feedback")
 	public String addFeedbackForm(Model model) {
 		model.addAttribute("feedback", new Feedback());
-		return "add-feedback";
+		return "feedback/add-feedback";
 	}
 	
 	@PostMapping("/add-feedback")
@@ -46,7 +46,7 @@ public class FeedbackController {
 	@GetMapping("/update-feedback/{f-id}")
 	public String updateFeedbackForm(@PathVariable("f-id") Long fId, Model model) {
 		model.addAttribute("feedback", feedbackDAO.getFeedbackById(fId));
-		return "update-feedback";
+		return "feedback/update-feedback";
 	}
 	
 	@PostMapping("/update-feedback")

@@ -31,14 +31,14 @@ public class UserController {
 
 		List<User> userList = userDAO.findAll();
 		model.addAttribute("users", userList);
-		return "users";
+		return "user/users";
 
 	}
 
 	@GetMapping("/add-user")
 	public String addUserForm(Model model) {
 		model.addAttribute("user", new User());
-		return "add-user";
+		return "user/add-user";
 	}
 
 	@PostMapping("/add-user")
@@ -74,7 +74,7 @@ public class UserController {
 	public String updateUserForm(@PathVariable("user-id") Long userId, Model model) {
 		User user = userDAO.getUserById(userId);
 		model.addAttribute("user", user);
-		return "update-user";
+		return "user/update-user";
 	}
 
 	@PostMapping("/update-user")

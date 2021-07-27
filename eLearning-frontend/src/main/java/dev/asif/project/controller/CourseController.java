@@ -22,13 +22,13 @@ public class CourseController {
 	public String coursesPage(Model model) {
 		List<Course> courseList = courseDAO.findAll();
 		model.addAttribute("courses", courseList);
-		return "courses";
+		return "course/courses";
 	}
 	
 	@GetMapping("/add-course")
 	public String addCourseForm(Model model) {
 		model.addAttribute("course", new Course());
-		return "add-course";
+		return "course/add-course";
 	}
 	
 	@PostMapping("/add-course")
@@ -46,7 +46,7 @@ public class CourseController {
 	@GetMapping("/update-course/{course-id}")
 	public String updateCourseForm(@PathVariable("course-id") Long courseId, Model model) {
 		model.addAttribute("course", courseDAO.getCourseById(courseId));
-		return "update-course";
+		return "course/update-course";
 	}
 	
 	@PostMapping("/update-course")

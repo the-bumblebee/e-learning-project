@@ -22,13 +22,13 @@ public class ContactController {
 	public String contactsPage(Model model) {
 		List<Contact> contactList = contactDAO.findAll();
 		model.addAttribute("contacts", contactList);
-		return "contacts";
+		return "contact/contacts";
 	}
 	
 	@GetMapping("/add-contact")
 	public String addContactForm(Model model) {
 		model.addAttribute("contact", new Contact());
-		return "add-contact";
+		return "contact/add-contact";
 	}
 	
 	@PostMapping("/add-contact")
@@ -46,7 +46,7 @@ public class ContactController {
 	@GetMapping("/update-contact/{contact-id}")
 	public String updateContactForm(@PathVariable("contact-id") Long contactId, Model model) {
 		model.addAttribute("contact", contactDAO.getContactById(contactId));
-		return "update-contact";
+		return "contact/update-contact";
 	}
 	
 	@PostMapping("/update-contact")
