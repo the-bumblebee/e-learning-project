@@ -25,8 +25,8 @@
 	<div
 		class="bg-light rounded border border-secondary col-md-3 mx-auto mt-5 py-3">
 		<h3 class="text-center">Login</h3>
-		<c:if test="${error != null }">
-			<p class="text-danger">${ error }</p>
+		<c:if test="${ sessionScope.error != null }">
+			<p class="text-danger">${ sessionScope.error }</p>
 		</c:if>
 		<form:form action="login" method="POST" modelAttribute="command"
 			autocomplete="off">

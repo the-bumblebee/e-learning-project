@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: dev.asif.project.UserDAOJunitTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 4.658 s <<< FAILURE! - in dev.asif.project.UserDAOJunitTest
+test_get_all_users_success  Time elapsed: 0.042 s  <<< ERROR!
+java.lang.NullPointerException
+	at dev.asif.project.UserDAOJunitTest.test_get_all_users_success(UserDAOJunitTest.java:35)
+
+dev.asif.project.UserDAOJunitTest  Time elapsed: 0.051 s  <<< ERROR!
+java.lang.NullPointerException
+	at dev.asif.project.UserDAOJunitTest.destroy(UserDAOJunitTest.java:28)
+
