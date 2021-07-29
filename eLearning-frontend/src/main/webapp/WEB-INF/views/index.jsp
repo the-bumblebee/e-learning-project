@@ -15,18 +15,12 @@
 <body>
 	<h1 class="text-center">${ message }</h1>
 	<hr>
-	<div class="text-center">
-		<a href="user-list" class="btn btn-outline-primary mr-1">Users</a> <a
-			href="course-list" class="btn btn-outline-primary">Courses</a> <a
-			href="feedback-list" class="btn btn-outline-primary">Feedbacks</a> <a
-			href="contact-list" class="btn btn-outline-primary">Contacts</a> <a
-			href="admin-list" class="btn btn-outline-primary">Admins</a>
-	</div>
 	<div
 		class="bg-light rounded border border-secondary col-md-3 mx-auto mt-5 py-3">
 		<h3 class="text-center">Login</h3>
-		<c:if test="${ sessionScope.error != null }">
-			<p class="text-danger">${ sessionScope.error }</p>
+		<!-- 		Use sessionScope.error if the attribute is in session -->
+		<c:if test="${ error != null }">
+			<p class="text-danger">${ error }</p>
 		</c:if>
 		<form:form action="login" method="POST" modelAttribute="command"
 			autocomplete="off">
@@ -51,7 +45,9 @@
 				</div>
 			</div>
 			<div class="form-group row justify-content-md-center">
-				<input type="submit" class="btn btn-primary col-md-6" value="Login" />
+				<input type="submit" class="btn btn-primary col-md-5 mr-1"
+					value="Login" /> <a href="<c:url value='/add-user' />"
+					class="btn btn-secondary col-md-5">New User</a>
 			</div>
 		</form:form>
 	</div>

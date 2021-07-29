@@ -49,18 +49,18 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean addUser(User user) {
 
-		String sql = "insert into user values (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into user (name, phone_no, email, address, reg_date, password, upload_photo) values (?, ?, ?, ?, ?, ?, ?)";
 
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setLong(1, user.getUserId());
-			ps.setString(2, user.getName());
-			ps.setLong(3, user.getPhoneNo());
-			ps.setString(4, user.getEmail());
-			ps.setString(5, user.getAddress());
-			ps.setDate(6, Date.valueOf(user.getRegDate())); // Date used here is java.sql.Date and not java.util.Date
-			ps.setString(7, user.getPassword());
-			ps.setString(8, user.getUploadPhoto());
+//			ps.setLong(1, user.getUserId());
+			ps.setString(1, user.getName());
+			ps.setLong(2, user.getPhoneNo());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getAddress());
+			ps.setDate(5, Date.valueOf(user.getRegDate())); // Date used here is java.sql.Date and not java.util.Date
+			ps.setString(6, user.getPassword());
+			ps.setString(7, user.getUploadPhoto());
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -101,6 +101,39 @@ public class UserDAOImpl implements UserDAO {
 
 		return null;
 	}
+	
+	@Override
+	public User getUserByEmailAndPassword(String email, String password) {
+
+		String sql = "select * from user where email = ? and password = ?";
+
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				long userId = rs.getLong("user_id");
+				String name = rs.getString("name");
+				long phoneNo = rs.getLong("phone_no");
+				String address = rs.getString("address");
+				LocalDate regDate = rs.getDate("reg_date").toLocalDate();
+				String uploadPhoto = rs.getString("upload_photo");
+
+				User user = new User(userId, name, phoneNo, email, address, regDate, password, uploadPhoto);
+
+				return user;
+			}
+
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 
 	@Override
 	public boolean deleteUser(Long userId) {

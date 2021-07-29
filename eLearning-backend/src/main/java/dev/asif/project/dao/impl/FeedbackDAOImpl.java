@@ -47,15 +47,15 @@ public class FeedbackDAOImpl implements FeedbackDAO {
 	@Override
 	public boolean addFeedback(Feedback feedback) {
 		
-		String sql = "insert into feedback values (?, ?, ?, ?, ?)";
+		String sql = "insert into feedback (user_id, name, email, feedback) values (?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setLong(1, feedback.getUserId());
 			ps.setString(2, feedback.getName());
 			ps.setString(3, feedback.getEmail());
-			ps.setLong(4, feedback.getfId());
-			ps.setString(5, feedback.getFeedback());
+//			ps.setLong(4, feedback.getfId());
+			ps.setString(4, feedback.getFeedback());
 			ps.executeUpdate();
 			
 			return true;

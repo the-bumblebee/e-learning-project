@@ -9,6 +9,7 @@ public interface AdminDAO {
 	List<Admin> findAll();
 	boolean addAdmin(Admin admin);
 	Admin getAdminById(Long adminId);
+	Admin getAdminByEmailAndPassword(String email, String password);
 	boolean deleteAdmin(Long adminId);
 	boolean updateAdmin(Admin admin);
 	

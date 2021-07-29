@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Base64Utils;
@@ -27,7 +29,12 @@ public class UserController {
 	UserDAO userDAO = new UserDAOImpl();
 
 	@GetMapping("/user-list")
-	public String usersPage(Model model) {
+	public String usersPage(Model model, HttpSession session) {
+		
+		String accountType = (String) session.getAttribute("accountType");
+
+		if (accountType == null || accountType.equals("user"))
+			return "redirect:/";
 
 		List<User> userList = userDAO.findAll();
 		model.addAttribute("users", userList);
@@ -43,7 +50,7 @@ public class UserController {
 
 	@PostMapping("/add-user")
 	public String addUser(@ModelAttribute("user") User user, @RequestParam("reg-date") String regDate,
-			@RequestParam("upload-photo") MultipartFile file) {
+			@RequestParam("upload-photo") MultipartFile file, HttpSession session) {
 
 		byte[] fileBytes = null;
 
@@ -60,49 +67,22 @@ public class UserController {
 		user.setRegDate(date);
 
 		userDAO.addUser(user);
+		
+		session.setAttribute("error", "Account created! Please Login!");
 
-		return "redirect:/user-list"; // Redirects to list of users
+		return "redirect:/"; // Redirects to list of users
 	}
 
 	@GetMapping("/delete-user/{user-id}")
-	public String deleteUser(@PathVariable("user-id") Long userId) {
+	public String deleteUser(@PathVariable("user-id") Long userId, HttpSession session) {
+		
+		String accountType = (String) session.getAttribute("accountType");
+
+		if (accountType == null || accountType.equals("user"))
+			return "redirect:/";
+		
 		userDAO.deleteUser(userId);
 		return "redirect:/user-list";
-	}
-
-	@GetMapping("/update-user/{user-id}")
-	public String updateUserForm(@PathVariable("user-id") Long userId, Model model) {
-		User user = userDAO.getUserById(userId);
-		model.addAttribute("user", user);
-		return "user/update-user";
-	}
-
-	@PostMapping("/update-user")
-	public String updateUser(@ModelAttribute("user") User user, @RequestParam("reg-date") String regDate,
-			@RequestParam("upload-photo") MultipartFile file) {
-		byte[] fileBytes = null;
-
-		try {
-			fileBytes = file.getBytes();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		String base64UploadPhoto;
-
-		if (fileBytes == null || fileBytes.length == 0) {
-			base64UploadPhoto = userDAO.getUserById(user.getUserId()).getUploadPhoto();
-		} else {
-			base64UploadPhoto = Base64Utils.encodeToString(fileBytes);
-		}
-
-		user.setUploadPhoto(base64UploadPhoto);
-		LocalDate date = LocalDate.parse(regDate);
-		user.setRegDate(date);
-
-		userDAO.updateUser(user);
-
-		return "redirect:/user-list"; // Redirects to list of users
 	}
 
 }

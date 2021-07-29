@@ -93,6 +93,34 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return null;
 	}
+	
+	@Override
+	public Admin getAdminByEmailAndPassword(String email, String password) {
+
+		String sql = "select * from admin where email = ? and password = ?";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				long adminId = rs.getLong("admin_id");
+				String name = rs.getString("name");
+				
+				Admin admin = new Admin(adminId, name, email, password);
+				return admin;
+			}
+			
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 	@Override
 	public boolean deleteAdmin(Long adminId) {
